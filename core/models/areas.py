@@ -15,6 +15,13 @@ class Area(models.Model):
         related_name='areas',
     )
 
-    
+    kind_of_neighborhood = models.ForeignKey(
+        KindOfNeighborhood,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='areas',
+    )
+
     def __str__(self):
         return self.name

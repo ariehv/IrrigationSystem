@@ -9,13 +9,13 @@
                 │ ∞
 ┌───────────────┴──────────────────────────────┐
 │                  Meter                       │
-│               (mone_meniv)                   │
+│              (mone_meniv)                    │
 │----------------------------------------------│
 │ id                                           │
 │ address                                      │
-│ dirates                                      │
+│ coordinates                                  │
 │ mispar_mone                                  │
-│ kind_of_water_id  → KindOfWater              │
+│ kind_of_water_id → KindOfWater               │
 └───────────────┬──────────────────────────────┘
                 │ 1
                 │
@@ -28,8 +28,8 @@
 │ number_comp                                  │
 │ operator                                     │
 │ coordinates                                  │
-│ area_id           → Area                     │
-│ meter_id          → Meter                    │
+│ area_id      → Area                          │
+│ meter_id     → Meter                         │
 └───────────────┬──────────────────────────────┘
                 │ ∞
                 │
@@ -53,26 +53,23 @@
    │----------------------------│       │--------------------------│
    │ id                         │       │ id                       │
    │ name                       │       │ name                     │
-   └────────────────────────────┘       └───────────────┬──────────┘
+   └────────────────────────────┘       │ district_id → District   │
+                                        └───────────────┬──────────┘
                                                         │ 1
                                                         │
                                                         │ ∞
                                             ┌────────────┴───────────────┐
-                                            │   Workers (Kablan role)    │
-                                            │  (job = 'Kablan')          │
-                                            │  neighborhood_id → here    │
-                                            └────────────────────────────┘
+                                            │            Area             │
+                                            └─────────────────────────────┘
 
 
 ┌──────────────────────────┐
 │        KindOfJob         │
 │--------------------------│
 │ id                       │
-│ name                     │   e.g. "Mefakeah"
-└───────────────┬──────────┘        "Kablan"
-                │ 1                  "Technician"
-                │                   "Electrician"
-                │                   ...
+│ name                     │
+└───────────────┬──────────┘
+                │ 1
                 │
                 │ ∞
 ┌───────────────┴──────────────────────────────┐
@@ -84,12 +81,10 @@
 │ last_name                                    │
 │ tel                                          │
 │ email                                        │
-│ job_id           → KindOfJob                 │
-│ neighborhood_id  → KindOfNeighborhood (for   │
-│                     Kablan workers only)     │
+│ job_id       → KindOfJob                     │
 └───────────────┬──────────────────────────────┘
                 │
-                │ 1 (only workers with job='Mefakeah')
+                │ (same worker can appear in many districts)
                 │
 ┌───────────────┴──────────────────────────────┐
 │                  District                    │
@@ -98,5 +93,7 @@
 │ id                                           │
 │ name                                         │
 │ description                                  │
-│ mefakeah_id       → Worker (job='Mefakeah')  │
+│ mefakeah_id     → Worker                     │
+│ kablan_id       → Worker                     │
+│ anahel_avoda_id → Worker                     │
 └──────────────────────────────────────────────┘

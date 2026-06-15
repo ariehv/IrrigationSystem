@@ -9,13 +9,12 @@ class Worker(models.Model):
     email = models.EmailField(blank=True, null=True)
 
     job = models.ForeignKey(
-        'lookups.KindOfJob',
+        KindOfJob,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
         related_name='workers',
     )
-
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

@@ -11,7 +11,23 @@ class District(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name='districts',
+        related_name='districts_as_mefakeah',
+    )
+
+    kablan = models.ForeignKey(
+        Worker,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='districts_as_kablan',
+    )
+
+    anahel_avoda = models.ForeignKey(
+        Worker,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='districts_as_anahel_avoda',
     )
 
     def __str__(self):
